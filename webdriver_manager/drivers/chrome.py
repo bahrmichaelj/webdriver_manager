@@ -68,7 +68,7 @@ class ChromeDriver(Driver):
             url = "https://googlechromelabs.github.io/chrome-for-testing/latest-patch-versions-per-build.json"
             response = self._http_client.get(url)
             response_dict = json.loads(response.text)
-            sorted_builds = sorted(response_dict.get("builds"))
+            sorted_builds = sorted(response_dict.get("builds").items())
             determined_browser_version = sorted_builds[-1].get("version")
             return determined_browser_version
         resp = self._http_client.get(url=latest_release_url)
